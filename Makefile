@@ -140,7 +140,7 @@ docker/db-data:
 	@docker create \
 		--name ${APP}-db-data \
 		--entrypoint /bin/echo \
-		mdillon/postgis:9.4 "Data-only" 2>/dev/null || true
+		mdillon/postgis:9.6 "Data-only" 2>/dev/null || true
 
 docker/db: docker/db-data
 	@echo "Starting database container..."
@@ -151,7 +151,7 @@ docker/db: docker/db-data
 		--volumes-from ${APP}-db-data \
 		--publish 5432:5432 \
 		--name ${APP}-db \
-		mdillon/postgis:9.4
+		mdillon/postgis:9.6
 
 docker/pg-interactive:
 	@echo "Starting interactive terminal to the database..."
@@ -159,7 +159,7 @@ docker/pg-interactive:
 		--tty \
 		 --rm \
 		--link ${APP}-db:postgres \
-		mdillon/postgis:9.4 \
+		mdillon/postgis:9.6 \
 		/bin/bash
 
 docker/nginx-build:
