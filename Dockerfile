@@ -37,7 +37,7 @@ RUN apk update && \
 
 # Symlink for the geo libraries
 RUN ln -s /usr/lib/libgeos_c.so.1 /usr/local/lib/libgeos_c.so \
-  && ln -s /usr/lib/libgdal.so.20 /usr/lib/libgdal.so
+  && ln -s /usr/lib/libgdal.so.[0-9][0-9] /usr/lib/libgdal.so
 
 # Install pipenv
 RUN pip install --no-cache-dir pipenv
