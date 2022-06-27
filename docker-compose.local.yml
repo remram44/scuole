@@ -12,19 +12,16 @@ services:
             - "5432:5432"
 
     web:
-        build: .
-        image: schools/web:latest
-        depends_on:
-            - db
-
-    proxy:
         build:
             context: .
             dockerfile: Dockerfile.local
-        ports:
-            - '80:80'
+        image: schools/web:latest
         depends_on:
-            - web
+            - db
+        environment:
+            - DATABASE_URL
+        ports:
+            - '80:8000'
 
 volumes:
     db-data: {}
