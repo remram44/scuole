@@ -5,6 +5,6 @@ services:
     image: schools/web:latest
     entrypoint: 'make data/update-directories'
     environment:
-      - DATABASE_URL
+      - DATABASE_URL=postgis://postgres:postgres@db/docker
     depends_on:
       - web
